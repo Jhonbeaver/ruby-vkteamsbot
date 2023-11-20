@@ -23,7 +23,6 @@ module VKTeams
 
     def initialize token, pool_time=30, verbose=false
       @token = token
-      @url = url
       @pool_time = pool_time
       @last_event_id = 0
       @loop = true
