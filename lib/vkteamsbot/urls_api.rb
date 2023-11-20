@@ -1,6 +1,6 @@
 module VKTeams
 module API 
-  @@base_url = ENV..fetch("url")
+  @@base_url = ENV.fetch("url")
   def self.base_url
     @@base_url
   end
