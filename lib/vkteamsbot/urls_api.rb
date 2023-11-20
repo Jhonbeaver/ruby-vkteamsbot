@@ -1,6 +1,6 @@
 module VKTeams
 module API 
-  @@base_url = "https://myteam.mail.ru/bot/v1"
+  @@base_url = "https://api.myteam.simbirsoft.com/bot/v1"
   def self.base_url
     @@base_url
   end
@@ -51,6 +51,9 @@ module API
   end
   def self.unblock_user
     @@base_url + '/chats/unblockUser'
+  end
+  def self.answer_callback_query
+    @@base_url + '/messages/answerCallbackQuery'
   end
 end
 end
