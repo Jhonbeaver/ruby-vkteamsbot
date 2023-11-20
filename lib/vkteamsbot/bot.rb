@@ -32,7 +32,7 @@ module VKTeams
       yield self if block_given?
     end
 
-    ENV["url"] = @url
+    ENV["URL"] = @url
     require_relative './urls_api.rb'
 
     def get_events # /events/get
