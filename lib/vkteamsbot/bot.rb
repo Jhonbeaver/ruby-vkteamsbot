@@ -41,6 +41,7 @@ module VKTeams
         'lastEventId': @last_event_id,
         'pollTime': @pool_time
       }
+      puts API.get_events
       Requests.get(API.get_events, params: params)
     end
 
