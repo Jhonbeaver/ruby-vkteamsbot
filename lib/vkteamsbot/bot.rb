@@ -20,7 +20,7 @@ module VKTeams
   class Bot
     attr_accessor :loop
 
-    def initialize token, pool_time=30, verbose=false
+    def initialize token, pool_time=30, verbose=false, url
       @token = token
       @url = url
       @pool_time = pool_time
@@ -34,7 +34,7 @@ module VKTeams
 
     ENV["url"] = @url
     require_relative './urls_api.rb'
-    
+
     def get_events # /events/get
       params = {
         'token': @token,
