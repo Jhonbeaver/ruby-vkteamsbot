@@ -20,7 +20,7 @@ module VKTeams
   class Bot
     attr_accessor :loop
 
-    def initialize token, pool_time=30, verbose=false, url
+    def initialize token, url, pool_time=30, verbose=false
       @token = token
       @url = url
       @pool_time = pool_time
