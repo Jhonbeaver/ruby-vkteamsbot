@@ -1,6 +1,7 @@
 require 'json'
 
 require_relative '../vkteamsbot.rb'
+require_relative './urls_api.rb'
 
 require_relative './functional/send_msg.rb'
 require_relative './functional/answerCallbackQuery.rb'
@@ -20,7 +21,7 @@ module VKTeams
   class Bot
     attr_accessor :loop
 
-    def initialize token, url, pool_time=30, verbose=false
+    def initialize token, pool_time=30, verbose=false
       @token = token
       @url = url
       @pool_time = pool_time
@@ -30,10 +31,7 @@ module VKTeams
       @callback_handlers = {}
       @verbose = verbose
       yield self if block_given?
-    end
-
-    ENV["URL"] = @url
-    require_relative './urls_api.rb'
+    end    
 
     def get_events # /events/get
       params = {
