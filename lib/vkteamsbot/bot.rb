@@ -1,9 +1,9 @@
 require 'json'
 
 require_relative '../vkteamsbot.rb'
-require_relative './urls_api.rb'
 
 require_relative './functional/send_msg.rb'
+require_relative './functional/answerCallbackQuery.rb'
 require_relative './functional/edit_msg.rb'
 require_relative './functional/delete_msg.rb'
 require_relative './functional/chats/get_info.rb'
@@ -22,6 +22,7 @@ module VKTeams
 
     def initialize token, pool_time=30, verbose=false
       @token = token
+      @url = url
       @pool_time = pool_time
       @last_event_id = 0
       @loop = true
@@ -31,6 +32,9 @@ module VKTeams
       yield self if block_given?
     end
 
+    ENV["url"] = @url
+    require_relative './urls_api.rb'
+    
     def get_events # /events/get
       params = {
         'token': @token,

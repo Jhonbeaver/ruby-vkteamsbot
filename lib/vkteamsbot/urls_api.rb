@@ -1,9 +1,6 @@
-require 'dotenv'
-Dotenv.load
-
 module VKTeams
 module API 
-  @@base_url = ENV['API_URL']
+  @@base_url = "https://api.myteam.simbirsoft.com/bot/v1"
   def self.base_url
     @@base_url
   end

@@ -13,7 +13,7 @@ module VKTeams
 
   class Event
     attr_reader :type, :text, :msg_id, :chat_id, :from,
-                :data, :query_id
+                :data, :query_id, :format
 
     def initialize event_h
       # TODO: больше информации
@@ -23,11 +23,15 @@ module VKTeams
       if @type != VKTeams::TypeEvent::CALLBACK
         @text = event_h['payload']['text']
         @msg_id = event_h['payload']['msgId']
+        @format = event_h['payload']['format']
         @chat_id = event_h['payload']['chat']['chatId']
       else
+        @text = event_h['payload']['message']['text']
+        @format = event_h['payload']['message']['format']
+        @msg_id = event_h['payload']['message']['msgId']
         @data = event_h['payload']['callbackData']
         @query_id = event_h['payload']['queryId']
-        @chat_id = event_h['message']['chat']['chatId']
+        @chat_id = event_h['payload']['message']['chat']['chatId']
       end
     end
 
