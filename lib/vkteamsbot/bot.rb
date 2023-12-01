@@ -48,9 +48,9 @@ module VKTeams
           last_event = events['events'].last
           @last_event_id = last_event['eventId']
           if @callback_handlers.has_key? last_event.try(:text)
-            @handlers[last_event.text].call last_event
-          elsif last_event.type == VKTeams::TypeEvent::CALLBACK and @callback_handlers.has_key? last_event.data 
-            @callback_handlers[last_event.text].call last_event
+            @handlers[last_event[:text]].call last_event
+          elsif last_event[:type] == VKTeams::TypeEvent::CALLBACK and @callback_handlers.has_key? last_event[:data] 
+            @callback_handlers[last_event[:text]].call last_event
           else
             yield last_event
           end
