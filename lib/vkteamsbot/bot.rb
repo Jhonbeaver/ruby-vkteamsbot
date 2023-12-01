@@ -47,8 +47,6 @@ module VKTeams
         if events and events['events'] and events['events'] != []
           last_event = events['events'].last
           @last_event_id = last_event['eventId']
-          last_event = VKTeams::Event.new last_event
-          is_handler = @handlers.keys.find {|k| last_event.text.include? k}
           if @callback_handlers.has_key? last_event.data 
             @handlers[last_event.text].call last_event
           elsif last_event.type == VKTeams::TypeEvent::CALLBACK and @callback_handlers.has_key? last_event.data 
