@@ -37,6 +37,10 @@ module VKTeams
 
     def to_h; @event_h end
     def to_s; "Event(#{@type}" + (@text ? ", #{@text}" : '') + ')' end
+    
+    def method_missing(method, *args)
+        puts "Sorry, I don't know any #{method} method."
+    end
   end
 
 end
