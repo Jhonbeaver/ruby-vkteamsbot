@@ -1,6 +1,6 @@
 module VKTeams
 module API 
-  @@base_url = 'https://api.myteam.simbirsoft.com/bot/v1'
+  @@base_url = 'https://myteam.mail.ru/bot/v1'
   def self.base_url
     @@base_url
   end
